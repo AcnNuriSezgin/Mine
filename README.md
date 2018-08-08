@@ -1,0 +1,2 @@
+# Mine
+Android resource bridge 
