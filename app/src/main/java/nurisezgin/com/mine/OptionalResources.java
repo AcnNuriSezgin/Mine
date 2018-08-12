@@ -13,7 +13,7 @@ import android.support.v4.content.ContextCompat;
 
 import polanski.option.Option;
 
-public class OptionalResources {
+public final class OptionalResources {
 
     public static Option<String> getString(Context context, @StringRes int id) {
         return Option.tryAsOption(() -> context.getString(id));
