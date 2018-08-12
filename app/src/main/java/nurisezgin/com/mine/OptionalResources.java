@@ -15,23 +15,23 @@ import polanski.option.Option;
 
 public class OptionalResources {
 
-    public Option<String> getString(Context context, @StringRes int id) {
+    public static Option<String> getString(Context context, @StringRes int id) {
         return Option.tryAsOption(() -> context.getString(id));
     }
 
-    public Option<String> getString(Context context, @StringRes int id, String... args) {
+    public static Option<String> getString(Context context, @StringRes int id, String... args) {
         return Option.tryAsOption(() -> context.getString(id, args));
     }
 
-    public Option<Integer> getInteger(Context context, @IntegerRes int id) {
+    public static Option<Integer> getInteger(Context context, @IntegerRes int id) {
         return Option.tryAsOption(() -> context.getResources().getInteger(id));
     }
 
-    public Option<Boolean> getBoolean(Context context, @BoolRes int id) {
+    public static Option<Boolean> getBoolean(Context context, @BoolRes int id) {
         return Option.tryAsOption(() -> context.getResources().getBoolean(id));
     }
 
-    public Option<Integer> getDimension(Context context, @DimenRes int id) {
+    public static Option<Integer> getDimension(Context context, @DimenRes int id) {
         return Option.tryAsOption(() -> context.getResources().getDimensionPixelSize(id));
     }
 
