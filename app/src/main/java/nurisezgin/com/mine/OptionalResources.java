@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.BoolRes;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
@@ -28,6 +29,10 @@ public class OptionalResources {
 
     public Option<Boolean> getBoolean(Context context, @BoolRes int id) {
         return Option.tryAsOption(() -> context.getResources().getBoolean(id));
+    }
+
+    public Option<Integer> getDimension(Context context, @DimenRes int id) {
+        return Option.tryAsOption(() -> context.getResources().getDimensionPixelSize(id));
     }
 
     public static Option<String[]> getStrings(Context context, @ArrayRes int id) {
