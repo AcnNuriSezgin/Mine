@@ -68,7 +68,7 @@ public final class Styleables {
         if (drawable == null) {
             drawable = _default;
         }
-
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
         return drawable;
     }
 
