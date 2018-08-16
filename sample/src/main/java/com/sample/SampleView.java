@@ -55,10 +55,12 @@ public class SampleView extends View {
     }
 
     private void init(AttributeSet attrs) {
+        TypedArray arr = null;
+
         if (attrs != null) {
-            TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.Sample);
-            StyleableAttributes.inject(this, getContext(), arr);
-            arr.recycle();
+            arr = getContext().obtainStyledAttributes(attrs, R.styleable.Sample);
         }
+
+        StyleableAttributes.inject(this, getContext(), arr);
     }
 }

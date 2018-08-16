@@ -34,6 +34,8 @@ import polanski.option.Option;
  */
 public final class StyleableAttributes {
 
+    // TODO: 16/08/2018 : drawable fetcher with id
+    // TODO: 16/08/2018 : refactor add strategy pattern instead multiple if-else
     public static void inject(Object thiz, Context context, TypedArray arr) {
         Field[] fields = thiz.getClass().getDeclaredFields();
 
@@ -48,7 +50,6 @@ public final class StyleableAttributes {
                     if (ann instanceof BooleanAttr) {
                         int id = ((BooleanAttr) ann).value();
                         boolean useRes = ((BooleanAttr) ann).useRes();
-                        boolean value;
                         boolean defValue;
 
                         if (useRes) {
@@ -59,7 +60,13 @@ public final class StyleableAttributes {
                             defValue = ((BooleanAttr) ann).defValue();
                         }
 
-                        value = getBoolean(arr, id, defValue);
+                        boolean value;
+                        if (arr != null) {
+                            value = getBoolean(arr, id, defValue);
+                        } else {
+                            value = defValue;
+                        }
+
                         field.set(thiz, value);
                     } else if (ann instanceof ColorAttr) {
                         int id = ((ColorAttr) ann).value();
@@ -78,7 +85,13 @@ public final class StyleableAttributes {
                                 .filter(def -> def != 0)
                                 .match(def -> def, () -> Color.TRANSPARENT);
 
-                        @ColorInt int value = getColor(arr, id, defValue);
+                        @ColorInt int value;
+                        if (arr != null) {
+                            value = getColor(arr, id, defValue);
+                        } else {
+                            value = defValue;
+                        }
+
                         field.set(thiz, value);
                     } else if (ann instanceof DimensionAttr) {
                         int id = ((DimensionAttr) ann).value();
@@ -93,14 +106,27 @@ public final class StyleableAttributes {
                             defValue = ((DimensionAttr) ann).defValue();
                         }
 
-                        @Px int value = getDimensionAsPixel(arr, id, defValue);
+                        @Px int value;
+                        if (arr != null) {
+                            value = getDimensionAsPixel(arr, id, defValue);
+                        } else {
+                            value = defValue;
+                        }
+
                         field.set(thiz, value);
                     }  else if (ann instanceof DrawableAttr) {
                         int id = ((DrawableAttr) ann).value();
                         @DrawableRes int defId = ((DrawableAttr) ann).defResValue();
                         Drawable defValue = OptionalResources.getDrawable(context, defId)
                                 .orDefault(() -> new ColorDrawable(Color.TRANSPARENT));
-                        Drawable value = getDrawable(arr, id, defValue);
+
+                        Drawable value;
+                        if (arr != null) {
+                            value = getDrawable(arr, id, defValue);
+                        } else {
+                            value = new ColorDrawable(Color.TRANSPARENT);
+                        }
+
                         field.set(thiz, value);
                     } else if (ann instanceof FloatAttr) {
                         int id = ((FloatAttr) ann).value();
@@ -115,13 +141,23 @@ public final class StyleableAttributes {
                             defValue = ((FloatAttr) ann).defValue();
                         }
 
-                        float value = getFloat(arr, id, defValue);
+                        float value;
+                        if (arr != null) {
+                            value = getFloat(arr, id, defValue);
+                        } else {
+                            value = defValue;
+                        }
+
                         field.set(thiz, value);
                     } else if (ann instanceof IdAttr) {
                         int id = ((IdAttr) ann).value();
                         int defValue = ((IdAttr) ann).defResValue();
-                        int value = getResourceId(arr, id, defValue);
-                        field.set(thiz, value);
+                        int value;
+
+                        if (arr != null) {
+                            value = getResourceId(arr, id, defValue);
+                            field.set(thiz, value);
+                        }
                     } else if (ann instanceof IntAttr) {
                         int id = ((IntAttr) ann).value();
                         boolean useRes = ((IntAttr) ann).useRes();
@@ -135,7 +171,13 @@ public final class StyleableAttributes {
                             defValue = ((IntAttr) ann).defValue();
                         }
 
-                        int value = getInt(arr, id, defValue);
+                        int value;
+                        if (arr != null) {
+                            value = getInt(arr, id, defValue);
+                        } else {
+                            value = 0;
+                        }
+
                         field.set(thiz, value);
                     } else if (ann instanceof StringAttr) {
                         int id = ((StringAttr) ann).value();
@@ -150,7 +192,13 @@ public final class StyleableAttributes {
                             defValue = ((StringAttr) ann).defValue();
                         }
 
-                        String value = getString(arr, id, defValue);
+                        String value;
+                        if (arr != null) {
+                            value = getString(arr, id, defValue);
+                        } else {
+                            value = defValue;
+                        }
+
                         field.set(thiz, value);
                     }
                 } catch (IllegalAccessException e) {
@@ -158,6 +206,8 @@ public final class StyleableAttributes {
                 }
             }
         }
+
+        arr.recycle();
     }
 
     public static boolean getBoolean(TypedArray arr, int index, boolean _default) {
