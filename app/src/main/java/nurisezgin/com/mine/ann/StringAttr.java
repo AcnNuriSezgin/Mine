@@ -18,4 +18,7 @@ public @interface StringAttr {
 
     @StringRes int defResValue() default 0;
 
+    boolean useRes() default true;
+
+    String defValue() default "";
 }

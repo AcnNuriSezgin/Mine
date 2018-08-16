@@ -1,5 +1,7 @@
 package nurisezgin.com.mine.ann;
 
+import android.support.annotation.IntegerRes;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,6 +16,10 @@ public @interface IntAttr {
 
     int value();
 
-    int defResValue() default 0;
+    @IntegerRes int defResValue() default 0;
+
+    boolean useRes() default true;
+
+    int defValue() default 0;
 
 }

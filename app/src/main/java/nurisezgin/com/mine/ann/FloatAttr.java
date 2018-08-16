@@ -18,4 +18,8 @@ public @interface FloatAttr {
 
     @IntegerRes int defResValue() default 0;
 
+    boolean useRes() default true;
+
+    float defValue() default 0f;
+
 }

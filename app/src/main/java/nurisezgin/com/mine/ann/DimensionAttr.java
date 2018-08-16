@@ -17,4 +17,8 @@ public @interface DimensionAttr {
     int value();
 
     @DimenRes int defResValue() default 0;
+
+    boolean useRes() default true;
+
+    int defValue() default 0;
 }

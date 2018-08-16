@@ -1,5 +1,6 @@
 package nurisezgin.com.mine.ann;
 
+import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 
 import java.lang.annotation.ElementType;
@@ -17,5 +18,9 @@ public @interface ColorAttr {
     int value();
 
     @ColorRes int defResValue() default 0;
+
+    boolean useRes() default true;
+
+    @ColorInt int defValue() default 0;
 
 }

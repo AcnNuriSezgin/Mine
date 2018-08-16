@@ -18,4 +18,8 @@ public @interface BooleanAttr {
 
     @BoolRes int defResValue() default 0;
 
+    boolean useRes() default true;
+
+    boolean defValue() default false;
+
 }
