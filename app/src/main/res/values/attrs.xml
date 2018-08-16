@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Sample">
+        <attr name="boolval" format="boolean" />
+        <attr name="colorval" format="color" />
+        <attr name="dimenval" format="dimension" />
+        <attr name="drawableval" format="integer" />
+        <attr name="floatval" format="float" />
+        <attr name="idval" format="integer" />
+        <attr name="intval" format="enum">
+            <enum name="one" value="1" />
+            <enum name="two" value="2" />
+        </attr>
+        <attr name="stringval" format="string" />
+    </declare-styleable>
+</resources>

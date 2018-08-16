@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="defBool">false</bool>
+    <item name="opt_float" format="float" type="integer">8.91</item>
+    <string name="opt_appname">OptAppName</string>
+    <integer name="opt_int">2</integer>
+</resources>

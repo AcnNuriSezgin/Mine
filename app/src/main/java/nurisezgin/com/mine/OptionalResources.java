@@ -10,10 +10,11 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 
 import polanski.option.Option;
 
-import static polanski.option.Option.*;
+import static polanski.option.Option.tryAsOption;
 
 public final class OptionalResources {
 
@@ -23,6 +24,14 @@ public final class OptionalResources {
 
     public static Option<String> getString(Context context, @StringRes int id, String... args) {
         return tryAsOption(() -> context.getString(id, args));
+    }
+
+    public static Option<Float> getFloat(Context context, @IntegerRes int id) {
+        return tryAsOption(() -> {
+            TypedValue value = new TypedValue();
+            context.getResources().getValue(id, value, true);
+            return value.getFloat();
+        });
     }
 
     public static Option<Integer> getInteger(Context context, @IntegerRes int id) {
