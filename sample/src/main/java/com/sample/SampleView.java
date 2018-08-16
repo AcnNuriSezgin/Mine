@@ -1,4 +1,4 @@
-package nurisezgin.com.mine.sample;
+package com.sample;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import nurisezgin.com.mine.R;
 import nurisezgin.com.mine.StyleableAttributes;
 import nurisezgin.com.mine.ann.BooleanAttr;
 import nurisezgin.com.mine.ann.ColorAttr;

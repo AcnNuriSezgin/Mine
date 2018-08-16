@@ -1,10 +1,8 @@
-package nurisezgin.com.mine.sample;
+package com.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
-import nurisezgin.com.mine.R;
 
 /**
  * Created by nuri on 16.08.2018
