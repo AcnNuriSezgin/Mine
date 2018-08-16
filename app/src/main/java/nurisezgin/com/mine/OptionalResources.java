@@ -8,6 +8,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntegerRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
@@ -27,11 +28,14 @@ public final class OptionalResources {
     }
 
     public static Option<Float> getFloat(Context context, @IntegerRes int id) {
-        return tryAsOption(() -> {
-            TypedValue value = new TypedValue();
-            context.getResources().getValue(id, value, true);
-            return value.getFloat();
-        });
+        return tryAsOption(() -> _getFloat(context, id));
+    }
+
+    @NonNull
+    private static Float _getFloat(Context context, @IntegerRes int id) {
+        TypedValue value = new TypedValue();
+        context.getResources().getValue(id, value, true);
+        return value.getFloat();
     }
 
     public static Option<Integer> getInteger(Context context, @IntegerRes int id) {
