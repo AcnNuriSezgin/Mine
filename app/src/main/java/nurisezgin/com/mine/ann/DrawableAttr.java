@@ -18,4 +18,8 @@ public @interface DrawableAttr {
 
     @DrawableRes int defResValue() default 0;
 
+    boolean useRes() default true;
+
+    int defValueRequestId() default 0;
+
 }
