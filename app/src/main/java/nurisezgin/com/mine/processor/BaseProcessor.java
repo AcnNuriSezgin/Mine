@@ -15,6 +15,6 @@ abstract class BaseProcessor<T> {
         this.context = context;
     }
 
-    public abstract ResultValue<T> getValue(Annotation annotation);
+    public abstract AttributeResultValue<T> getValue(Annotation annotation);
 
 }

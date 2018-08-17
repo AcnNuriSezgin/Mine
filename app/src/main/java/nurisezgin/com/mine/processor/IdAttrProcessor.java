@@ -16,12 +16,12 @@ public final class IdAttrProcessor extends BaseProcessor<Integer> {
     }
 
     @Override
-    public ResultValue<Integer> getValue(Annotation annotation) {
+    public AttributeResultValue<Integer> getValue(Annotation annotation) {
         IdAttr ann = (IdAttr) annotation;
 
         int index = ann.value();
         int defValue = ann.defResValue();
 
-        return new ResultValue<>(index, defValue);
+        return new AttributeResultValue<>(index, defValue);
     }
 }

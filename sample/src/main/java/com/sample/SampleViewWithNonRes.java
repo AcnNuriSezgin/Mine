@@ -25,21 +25,21 @@ import nurisezgin.com.mine.ann.StringAttr;
  */
 public class SampleViewWithNonRes extends View implements DrawableLoader {
 
-    @BooleanAttr(value = R.styleable.Sample_boolval, useRes = false, defValue = true)
+    @BooleanAttr(value = R.styleable.Sample_boolval, defValue = true)
     private boolean booleanVal;
-    @ColorAttr(value = R.styleable.Sample_colorval, useRes = false, defValue = Color.RED)
+    @ColorAttr(value = R.styleable.Sample_colorval, defValue = Color.RED)
     private int colorVal;
-    @DimensionAttr(value = R.styleable.Sample_dimenval, useRes = false, defValue = 2)
+    @DimensionAttr(value = R.styleable.Sample_dimenval, defValue = 2)
     private int dimenVal;
-    @DrawableAttr(value = R.styleable.Sample_drawableval, useRes = false, defValueRequestId = 2)
+    @DrawableAttr(value = R.styleable.Sample_drawableval, defValueRequestId = 2)
     private Drawable drawableVal;
-    @FloatAttr(value = R.styleable.Sample_floatval, useRes = false, defResValue = R.integer.opt_float)
+    @FloatAttr(value = R.styleable.Sample_floatval, defResValue = R.integer.opt_float)
     private float floatVal;
     @IdAttr(value = R.styleable.Sample_idval, defResValue = R.id.sample_view)
     private int idVal;
-    @IntAttr(value = R.styleable.Sample_intval, useRes = false, defValue = 92)
+    @IntAttr(value = R.styleable.Sample_intval, defValue = 1)
     private int enumVal;
-    @StringAttr(value = R.styleable.Sample_stringval, useRes = false, defValue = "absc")
+    @StringAttr(value = R.styleable.Sample_stringval, defValue = "absc")
     private String stringVal;
 
     public SampleViewWithNonRes(Context context) {

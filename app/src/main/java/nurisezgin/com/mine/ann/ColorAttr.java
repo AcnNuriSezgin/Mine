@@ -8,6 +8,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static nurisezgin.com.mine.ann.Constants.NON_RES;
+
 /**
  * Created by nuri on 16.08.2018
  */
@@ -17,9 +19,7 @@ public @interface ColorAttr {
 
     int value();
 
-    @ColorRes int defResValue() default 0;
-
-    boolean useRes() default true;
+    @ColorRes int defResValue() default NON_RES;
 
     @ColorInt int defValue() default 0;
 

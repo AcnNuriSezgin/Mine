@@ -11,6 +11,8 @@ import nurisezgin.com.mine.OptionalResources;
 import nurisezgin.com.mine.ann.ColorAttr;
 import polanski.option.Option;
 
+import static nurisezgin.com.mine.ann.Constants.NON_RES;
+
 /**
  * Created by nuri on 17.08.2018
  */
@@ -21,15 +23,14 @@ public final class ColorAttrProcessor extends BaseProcessor<Integer> {
     }
 
     @Override
-    public ResultValue<Integer> getValue(Annotation annotation) {
+    public AttributeResultValue<Integer> getValue(Annotation annotation) {
         ColorAttr ann = (ColorAttr) annotation;
 
         int index = ann.value();
-        boolean useRes = ann.useRes();
+        @ColorRes int defId = ann.defResValue();
         @ColorInt int defValue;
 
-        if (useRes) {
-            @ColorRes int defId = ann.defResValue();
+        if (defId != NON_RES) {
             defValue = OptionalResources.getColor(context, defId)
                     .orDefault(() -> Color.TRANSPARENT);
         } else {
@@ -40,6 +41,6 @@ public final class ColorAttrProcessor extends BaseProcessor<Integer> {
                 .filter(def -> def != 0)
                 .match(def -> def, () -> Color.TRANSPARENT);
 
-        return new ResultValue<>(index, defValue);
+        return new AttributeResultValue<>(index, defValue);
     }
 }

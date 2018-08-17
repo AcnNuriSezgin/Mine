@@ -8,6 +8,8 @@ import java.lang.annotation.Annotation;
 import nurisezgin.com.mine.OptionalResources;
 import nurisezgin.com.mine.ann.BooleanAttr;
 
+import static nurisezgin.com.mine.ann.Constants.NON_RES;
+
 /**
  * Created by nuri on 17.08.2018
  */
@@ -18,22 +20,21 @@ public final class BooleanAttrProcessor extends BaseProcessor<Boolean> {
     }
 
     @Override
-    public ResultValue<Boolean> getValue(Annotation annotation) {
+    public AttributeResultValue<Boolean> getValue(Annotation annotation) {
         BooleanAttr ann = (BooleanAttr) annotation;
 
         int index = ann.value();
-        boolean useRes = ann.useRes();
+        @BoolRes int defId = ann.defResValue();
         boolean defValue;
 
-        if (useRes) {
-            @BoolRes int defId = ann.defResValue();
+        if (defId != NON_RES) {
             defValue = OptionalResources.getBoolean(context, defId)
                     .orDefault(() -> false);
         } else {
             defValue = ann.defValue();
         }
 
-        return new ResultValue<>(index, defValue);
+        return new AttributeResultValue<>(index, defValue);
     }
 
 }

@@ -12,6 +12,8 @@ import nurisezgin.com.mine.DrawableLoader;
 import nurisezgin.com.mine.OptionalResources;
 import nurisezgin.com.mine.ann.DrawableAttr;
 
+import static nurisezgin.com.mine.ann.Constants.NON_RES;
+
 /**
  * Created by nuri on 17.08.2018
  */
@@ -25,15 +27,14 @@ public final class DrawableAttrProcessor extends BaseProcessor<Drawable> {
     }
 
     @Override
-    public ResultValue<Drawable> getValue(Annotation annotation) {
+    public AttributeResultValue<Drawable> getValue(Annotation annotation) {
         DrawableAttr ann = (DrawableAttr) annotation;
 
         int index = ann.value();
         @DrawableRes int defId = ann.defResValue();
-        boolean useRes = ann.useRes();
         Drawable defValue;
 
-        if (useRes) {
+        if (defId != NON_RES) {
             defValue = OptionalResources.getDrawable(context, defId)
                     .orDefault(() -> new ColorDrawable(Color.TRANSPARENT));
         } else {
@@ -41,6 +42,6 @@ public final class DrawableAttrProcessor extends BaseProcessor<Drawable> {
             defValue = loader.loadDrawable(requestId);
         }
 
-        return new ResultValue<>(index, defValue);
+        return new AttributeResultValue<>(index, defValue);
     }
 }

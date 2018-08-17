@@ -7,6 +7,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static nurisezgin.com.mine.ann.Constants.NON_RES;
+
 /**
  * Created by nuri on 16.08.2018
  */
@@ -16,9 +18,7 @@ public @interface IntAttr {
 
     int value();
 
-    @IntegerRes int defResValue() default 0;
-
-    boolean useRes() default true;
+    @IntegerRes int defResValue() default NON_RES;
 
     int defValue() default 0;
 
