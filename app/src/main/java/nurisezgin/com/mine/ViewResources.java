@@ -112,7 +112,6 @@ public final class ViewResources {
     }
 
     public static void setTextSizeAsPixel(TextView view, @Px int size) {
-        Context context = view.getContext();
         view.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
     }
 }
