@@ -18,6 +18,7 @@ public class SampleActivity extends Activity {
         SampleView opt_view = findViewById(R.id.opt_sample_view);
         SampleView def_view = new SampleView(this);
         SampleViewWithNonRes pView = new SampleViewWithNonRes(this);
+        SampleViewCustomAttribute customAttribute = new SampleViewCustomAttribute(this);
         System.out.println("");
     }
 }

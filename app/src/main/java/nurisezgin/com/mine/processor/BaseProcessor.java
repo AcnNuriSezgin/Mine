@@ -7,7 +7,7 @@ import java.lang.annotation.Annotation;
 /**
  * Created by nuri on 17.08.2018
  */
-abstract class BaseProcessor<T> {
+public abstract class BaseProcessor<T> {
 
     protected final Context context;
 
